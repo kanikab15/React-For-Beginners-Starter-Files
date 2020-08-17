@@ -22,6 +22,12 @@ class App extends React.Component {
     this.setState({fishes: sampleFishes});
   }
 
+  addToOrder = (key) => {
+    const order = {...this.state.order};
+    order[key] = order[key] + 1 || 1;
+    this.setState({order: order});
+  }
+
   render(){
     return (
       <div className="catch-of-the-day">
@@ -29,7 +35,12 @@ class App extends React.Component {
           <Header tagline="Catch of the day"></Header>
           <ul className="fishes">
             {Object.keys(this.state.fishes).map( key =>
-              <Fish key={key} details={this.state.fishes[key]}></Fish>)}
+              <Fish
+                key={key}
+                identifier={key} //because no way to access 'key' of a component in React
+                details={this.state.fishes[key]}
+                addToOrder={this.addToOrder}>
+              </Fish>)}
           </ul>
         </div>
         <Order></Order>
