@@ -7,6 +7,11 @@ class Order extends React.Component {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
     const isAvailable = fish && fish.status === 'available';
+
+    // to ensure nothing is displayed when fish are being fetched from
+    // firebase
+    if(!fish) return null;
+
     if(isAvailable)
       return (
         <li key={key}>
