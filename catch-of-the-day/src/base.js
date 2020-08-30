@@ -1,11 +1,8 @@
 import Rebase from 're-base';
 import firebase from 'firebase';
+import config from './config';
 
-const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyAphKLd6dIPAU3JdzsBumFiyLLOTRVW2YI",
-    authDomain: "catch-of-the-day-kanika.firebaseapp.com",
-    databaseURL: "https://catch-of-the-day-kanika.firebaseio.com",
-  });
+const firebaseApp = firebase.initializeApp(config);
 
 const base = Rebase.createClass(firebaseApp.database());
 
