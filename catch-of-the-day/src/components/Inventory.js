@@ -71,7 +71,8 @@ authenticate= (provider) => {
             key={key}
             fish={this.props.fishes[key]}
             index={key}
-            updateFish={this.props.updateFish}>
+            updateFish={this.props.updateFish}
+            deleteFish={this.props.deleteFish}>
           </EditFishForm>)}
         <AddFishForm addFish={this.props.addFish}></AddFishForm>
         <button onClick={this.props.loadSampleFishes}>Load Sample Fishes</button>
