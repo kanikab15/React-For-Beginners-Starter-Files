@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import AddFishForm from './AddFishForm';
 import EditFishForm from './EditFishForm';
@@ -6,6 +7,14 @@ import Login from './Login';
 import base, { firebaseApp } from '../base';
 
 class Inventory extends React.Component {
+static propTypes = {
+  storeId: PropTypes.string,
+  fishes: PropTypes.object,
+  updateFish: PropTypes.func,
+  deleteFish: PropTypes.func,
+  addFish: PropTypes.func,
+  loadSampleFishes: PropTypes.func
+};
 state = {
   uid: null,
   owner: null
@@ -34,6 +43,7 @@ authHandler = async(authData) => {
   })
 }
 authenticate= (provider) => {
+
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
     firebaseApp
       .auth()
